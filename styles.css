@@ -92,4 +92,74 @@ details button {
     height: 100%;
     display: flex;
     padding: 0 150px;
+    flex-direction: column;
+}
+
+.box-home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    text-align: center;
+    height: 100%;
+}
+
+.box-home span {
+    font-weight: 500;
+}
+
+.box-home h1 {
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+.box-home h1 span {
+    color: var(--primary);
+}
+
+.box-home p {
+    font-weight: 300;
+}
+
+.box-input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.box-input textarea {
+    min-height: 40px;
+    height: auto;
+    resize: vertical;
+    padding: 8px;
+    background-color: transparent;
+    border: 1px solid var(--border-primary);
+    border-radius: 4px;
+    outline: none;
+    color: var(--text-color);
+}
+
+.box-input button {
+    width: 170px;
+    margin-left: auto;
+    padding: 8px;
+    border-radius: 4px;
+    background-color: var(--primary);
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.box-footer {
+    width: 100%;
+    padding: 20px;
+}
+
+.box-footer p {
+    text-align: center;
+    font-weight: 500;
+}
+
+.box-footer p span {
+    color: var(--primary);
 }
