@@ -61,14 +61,26 @@ details summary {
 }
 
 details summary::after {
-    content: "🔺";
+    content: "☆";
     transition: rotate 200ms ease-in;
 }
 
 details[open] summary::after{
-    content: "🔺";
+    content: "☆";
     transition: rotate 200ms ease-out;
     rotate: 180deg;
+}
+
+details button {
+    display: block;
+    width: 85%;
+    margin: 0 auto;
+    margin-top: 8px;
+    padding: 5px;
+    background-color: var(--secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: 4px;
+    color: var(--text-color);
 }
 
 .suggestion summary{
