@@ -1,3 +1,4 @@
+import { ItemSuggestion } from "./compoments/ItemSuggestion"
 
 function App() {
 
@@ -6,10 +7,10 @@ function App() {
       <div className="sidebar">
         <details open className="suggestion">
           <summary>Tópicos Sugeridos</summary>
-          <button>HTML</button>
-          <button>CSS</button>
-          <button>JavaScript</button>
-          <button>TypeScript</button>
+          <ItemSuggestion title="HTML" />
+          <ItemSuggestion title="CSS" />
+          <ItemSuggestion title="JavaScript" />
+          <ItemSuggestion title="TypeScript" />
         </details>
 
         <details open className="historic">
