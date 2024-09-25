@@ -5,6 +5,7 @@ type ProgressType = 'pending' | 'started' | 'done'
 
 function App() {
   const [progress, setProgress] = useState<ProgressType>('pending')
+  const [textarea, setTextarea] = useState<string>('')
 
   function handleSubmitChat() {
     if (progress === "pending") {
@@ -43,14 +44,7 @@ function App() {
             </div>
           )}
 
-        {progress === 'pending' && (
-
-            <div className="box-input">
-              <textarea placeholder="Digite o tema que deseja estudar"></textarea>
-              <button onClick={handleSubmitChat}>Enviar pergunta</button>
-            </div>
-
-          )}
+        
 
           {progress !== 'pending' && (
           <div className="box-chat">
@@ -81,6 +75,16 @@ function App() {
             </div>
          </div> 
       )}
+
+        <div className="box-input">
+          <textarea 
+            value={textarea}
+            onChange={element => setTextarea(element.target.value)}
+            placeholder={progress === 'started' ? "Insira sua resposta..." : "Insira o tema que deseja estudar..."}
+            />
+          <button onClick={handleSubmitChat}>{progress === 'pending' ? 'Enviar Pergunta' : 'Enviar Resposta'}</button>
+        </div>
+
 
         <footer className="box-footer">
           <p>teach<span>.me</span></p>
