@@ -42,10 +42,10 @@ function App() {
       <div className="sidebar">
         <details open className="suggestion">
           <summary>Tópicos Sugeridos</summary>
-          <ItemSuggestion title="HTML" />
-          <ItemSuggestion title="CSS" />
-          <ItemSuggestion title="JavaScript" />
-          <ItemSuggestion title="TypeScript" />
+          <ItemSuggestion title="HTML" onClick={() => setTextarea('HTML')}/>
+          <ItemSuggestion title="CSS" onClick={() => setTextarea('CSS')}/>
+          <ItemSuggestion title="JavaScript" onClick={() => setTextarea('JavaScript')}/>
+          <ItemSuggestion title="TypeScript" onClick={() => setTextarea('TypeScript')}/>
         </details>
 
         <details open className="historic">
