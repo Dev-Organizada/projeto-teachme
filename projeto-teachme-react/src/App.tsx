@@ -3,12 +3,20 @@ import { ItemSuggestion } from "./compoments/ItemSuggestion"
 
 type ProgressType = 'pending' | 'started' | 'done'
 
+
 function App() {
   const [progress, setProgress] = useState<ProgressType>('pending')
   const [textarea, setTextarea] = useState<string>('')
+  const [chat, setChat] = useState<string[]>([])
 
   function handleSubmitChat() {
+    if (!textarea){
+      return
+    }
+
     if (progress === "pending") {
+      setChat(text => [...text, textarea])
+      setChat(text => [...text, 'Pergunta gerada por IA'])
       setProgress("started")
     }
   }
@@ -48,31 +56,34 @@ function App() {
 
           {progress !== 'pending' && (
           <div className="box-chat">
-            <h1>Você está estudando sobre <span>HTML</span></h1>
+            {chat[0] && (
+              <h1>Você está estudando sobre <span>{chat[0]}</span></h1>
+            )}
 
-            <div className="question">
-              <h2>Pergunte</h2>
-              <p>
-                Aqui vai ser a pergunta
-              </p>
+            {chat[1] && (
+              <div className="question">
+              <h2>Pergunta</h2>
+              <p>{chat[1]}</p>
             </div>
+            )}
 
-            <div className="answer">
+            {chat[2] && (
+              <div className="answer">
               <h2>Sua Resposta</h2>
-              <p>
-                Aqui será sua Resposta.
-              </p>
+              <p>{chat[2]}</p>
             </div>
+            )}
 
-            <div className="feedback">
+            {chat[3] && (
+              <div className="feedback">
               <h2>Feedback teach<span>.me</span></h2>
-              <p>
-                Aqui será o feedback.
-              </p>
+              <p>{chat[3]}</p>
               <div className="action">
                 <button>Estudar novo tópico</button>
               </div>
             </div>
+            )}
+
          </div> 
       )}
 
