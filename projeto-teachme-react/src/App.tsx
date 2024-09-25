@@ -9,16 +9,32 @@ function App() {
   const [textarea, setTextarea] = useState<string>('')
   const [chat, setChat] = useState<string[]>([])
 
+  function resertChat(){
+    setProgress('pending')
+    setChat([])
+  }
+
   function handleSubmitChat() {
     if (!textarea){
       return
     }
 
+    const message = textarea
+    setTextarea('')
+
     if (progress === "pending") {
-      setChat(text => [...text, textarea])
+      setChat(text => [...text, message])
       setChat(text => [...text, 'Pergunta gerada por IA'])
+
       setProgress("started")
+      return
     }
+
+    setChat(text => [...text, message])
+    setChat(text => [...text, 'Feedback gerado por IA'])
+
+    setProgress('done')
+
   }
 
   return (
@@ -79,7 +95,7 @@ function App() {
               <h2>Feedback teach<span>.me</span></h2>
               <p>{chat[3]}</p>
               <div className="action">
-                <button>Estudar novo tópico</button>
+                <button onClick={resertChat}>Estudar novo tópico</button>
               </div>
             </div>
             )}
@@ -87,14 +103,16 @@ function App() {
          </div> 
       )}
 
+      {progress !== 'done' && (
         <div className="box-input">
-          <textarea 
-            value={textarea}
-            onChange={element => setTextarea(element.target.value)}
-            placeholder={progress === 'started' ? "Insira sua resposta..." : "Insira o tema que deseja estudar..."}
-            />
-          <button onClick={handleSubmitChat}>{progress === 'pending' ? 'Enviar Pergunta' : 'Enviar Resposta'}</button>
-        </div>
+        <textarea 
+          value={textarea}
+          onChange={element => setTextarea(element.target.value)}
+          placeholder={progress === 'started' ? "Insira sua resposta..." : "Insira o tema que deseja estudar..."}
+          />
+        <button onClick={handleSubmitChat}>{progress === 'pending' ? 'Enviar Pergunta' : 'Enviar Resposta'}</button>
+      </div>
+      )}
 
 
         <footer className="box-footer">
