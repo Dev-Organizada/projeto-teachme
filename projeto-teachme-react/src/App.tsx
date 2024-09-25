@@ -39,6 +39,12 @@ function App() {
 
   }
 
+  function clearItem(){
+    localStorage.clear()
+    resertChat()
+  }
+  
+
   return (
     <div className="conteiner">
       <div className="sidebar">
@@ -57,8 +63,14 @@ function App() {
               <ItemSuggestion title={item} onClick={() => setTextarea(item)} />
             ))
           }
-        </details>
 
+          {
+            getHistoric().length !== 0 &&(
+              <ItemSuggestion title="Apagar histórico" onClick={() => clearItem()}/>
+            )
+          }
+
+        </details>
       </div>
 
       <div className="content">
